@@ -4,22 +4,24 @@
 # multitenancy=false
 ---
 applications:
+
 # -----------------------------------------------------------------------------------
 # Backend Service
 # -----------------------------------------------------------------------------------
+
 - name: risk-management-srv
   random-route: true  # for development only
   path: gen/srv
   memory: 256M
   buildpack: nodejs_buildpack
   services:
-  - risk-management-xsuaa
   - risk-management-db
-  - risk-management-destination-service
+  - risk-management-xsuaa
 
 # -----------------------------------------------------------------------------------
 # HANA Database Content Deployer App
 # -----------------------------------------------------------------------------------
+
 - name: risk-management-db-deployer
   path: gen/db
   no-route: true
